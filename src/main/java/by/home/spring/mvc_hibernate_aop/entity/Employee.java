@@ -66,4 +66,12 @@ public class Employee {
     public int getSalary() {
         return salary;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

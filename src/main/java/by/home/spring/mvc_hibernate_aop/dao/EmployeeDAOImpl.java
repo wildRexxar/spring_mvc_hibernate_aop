@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -33,5 +32,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public Employee getEmployee(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Employee.class, id);
+    }
+
+    @Override
+    public void deleteEmployee(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        int query = session
+                .createQuery("delete from Employee where id =:id")
+                .setParameter("id", id)
+                .executeUpdate();
     }
 }
